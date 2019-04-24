@@ -1,7 +1,7 @@
 import fetch from 'isomorphic-unfetch'
 import Link from 'next/link'
 import {withRouter} from 'next/router'
-
+// withRouter这个高阶组件会将当前的路由对象注入到组件中去，并将路由对象绑定到组件的props上
 const MovieType = withRouter((props) => (
   <div className="movie-type">
     {
@@ -36,14 +36,18 @@ const MovieType = withRouter((props) => (
     .movie-box:hover {
       box-shadow: rgba(0,0,0,0.3) 0px 19px 60px;
     }
+    .movie-box h4 {
+      color: red;
+    }
       `}</style>
   </div>
 ))
 
+//请求数据
 MovieType.getInitialProps = async function (context) {
   let res = await fetch(`http://localhost:3301/${context.query.type}`)
   let data = await res.json()
-  console.log(data);
+  // getInitialProps方法必须返回一个对象
   return {movieList: data}
 }
 

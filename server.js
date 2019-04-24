@@ -9,9 +9,9 @@ app.prepare()
 .then(() => {
   const server = express()
 
-  server.get('/next-route/teacher/:id', (req, res) => {
-    const actualPage = '/next-route/teacher/detail'
-    const queryParams = { id: req.params.id } 
+  server.get('/movie/type/:type', (req, res) => {
+    const actualPage = '/movie/type'
+    const queryParams = { type: req.params.type }
     app.render(req, res, actualPage, queryParams)
   })
 
